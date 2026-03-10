@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Think'AI — Formulaire d'Adhésion</title>
+    <link rel="icon" type="image/svg+xml" href="think'ai 01.svg" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#600503",
+              "primary-hover": "#8a0705",
+              secondary: "#fcc901",
+              surface: "#faf8f8",
+              border: "#e4dbdb",
+              label: "#3d1a18",
+              muted: "#7a6060",
+            },
+            fontFamily: {
+              display: ['"Playfair Display"', "serif"],
+              sans: ['"DM Sans"', "sans-serif"],
+            },
+            keyframes: {
+              fadeUp: {
+                from: { opacity: "0", transform: "translateY(18px)" },
+                to: { opacity: "1", transform: "translateY(0)" },
+              },
+              spin: {
+                to: { transform: "rotate(360deg)" },
+              },
+            },
+            animation: {
+              fadeUp: "fadeUp 0.55s ease both",
+              fadeUp1: "fadeUp 0.55s 0.06s ease both",
+              fadeUp2: "fadeUp 0.55s 0.12s ease both",
+              fadeUp3: "fadeUp 0.55s 0.18s ease both",
+              fadeUp4: "fadeUp 0.55s 0.24s ease both",
+              fadeUp5: "fadeUp 0.55s 0.30s ease both",
+              fadeUp6: "fadeUp 0.55s 0.36s ease both",
+              spin: "spin 0.7s linear infinite",
+            },
+          },
+        },
+      };
+    </script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body class="font-sans bg-white text-[#1a0a09] min-h-screen">
+    <div
+      class="grid min-h-screen grid-cols-1 lg:grid-cols-[380px_1fr] xl:grid-cols-[420px_1fr] 2xl:grid-cols-[460px_1fr]"
+    >
+      <!-- ═══ LEFT PANEL ═══════════════════════════════ -->
+      <aside
+        class="panel-left bg-primary relative overflow-hidden flex flex-col items-center justify-center p-12 lg:p-10 max-lg:flex-row max-lg:gap-5 max-lg:py-8 max-lg:px-6 max-lg:min-h-0"
+      >
+        <div
+          class="relative z-10 text-center max-lg:flex flex-col max-lg:items-center max-lg:gap-5 max-lg:text-left"
+        >
+          <!-- Brain Logo -->
+          <img
+            alt="logo"
+            class="block mx-auto mb-6 flex-shrink-0 max-lg:w-28 max-lg:mx-0 max-lg:mb-0"
+            src="Think'ai.svg"
+          />
+
+          <div>
+            <div
+              class="w-9 h-0.5 bg-secondary rounded-full my-4 mx-auto max-lg:hidden"
+            ></div>
+            <p
+              class="text-xs font-light tracking-[0.22em] uppercase text-white/45 max-lg:text-[0.65rem] max-lg:tracking-[0.16em]"
+            >
+              Explorer · Comprendre · Anticiper
+            </p>
+          </div>
+        </div>
+      </aside>
+
+      <!-- ═══ RIGHT PANEL ══════════════════════════════ -->
+      <main
+        class="bg-white flex items-center justify-center px-6 py-12 sm:px-12 lg:px-16 xl:px-28 2xl:px-32"
+      >
+        <div class="w-full max-w-[500px]">
+          <!-- Heading — hidden when success is shown -->
+          <div id="form-head" class="mb-9 animate-fadeUp">
+            <span
+              class="block w-7 h-[3px] bg-secondary rounded-full mb-3.5"
+            ></span>
+            <h1
+              class="font-display font-bold text-[clamp(1.45rem,2.5vw,1.9rem)] text-[#1a0a09] leading-tight mb-2"
+            >
+              Formulaire d'Adhésion
+            </h1>
+            <p class="text-sm text-muted leading-relaxed">
+              Rejoignez la communauté Think'AI. Renseignez vos informations pour
+              soumettre votre demande d'adhésion.
+            </p>
+          </div>
+
+          <!-- Form -->
+          <form id="form" novalidate>
+            <!-- Nom / Prénom -->
+            <div class="grid grid-cols-2 gap-4 max-[480px]:grid-cols-1">
+              <div class="mb-[18px] animate-fadeUp1">
+                <label
+                  for="nom"
+                  class="block text-[0.775rem] font-semibold text-label uppercase tracking-[0.06em] mb-1.5"
+                >
+                  Nom <span class="text-primary">*</span>
+                </label>
+                <input
+                  type="text"
+                  id="nom"
+                  name="nom"
+                  placeholder="Votre nom"
+                  autocomplete="family-name"
+                  maxlength="60"
+                  class="field-input w-full bg-surface border border-border rounded-[10px] px-[15px] py-[13px] text-sm text-[#1a0a09] transition-all placeholder:text-[#c4b5b5] placeholder:font-light"
+                />
+                <p class="err text-[0.76rem] text-red-600 mt-1" id="e-nom">
+                  Veuillez renseigner votre nom.
+                </p>
+              </div>
+              <div class="mb-[18px] animate-fadeUp1">
+                <label
+                  for="prenom"
+                  class="block text-[0.775rem] font-semibold text-label uppercase tracking-[0.06em] mb-1.5"
+                >
+                  Prénom <span class="text-primary">*</span>
+                </label>
+                <input
+                  type="text"
+                  id="prenom"
+                  name="prenom"
+                  placeholder="Votre prénom"
+                  autocomplete="given-name"
+                  maxlength="60"
+                  class="field-input w-full bg-surface border border-border rounded-[10px] px-[15px] py-[13px] text-sm text-[#1a0a09] transition-all placeholder:text-[#c4b5b5] placeholder:font-light"
+                />
+                <p class="err text-[0.76rem] text-red-600 mt-1" id="e-prenom">
+                  Veuillez renseigner votre prénom.
+                </p>
+              </div>
+            </div>
+
+            <!-- Fonction / Entreprise -->
+            <div class="grid grid-cols-2 gap-4 max-[480px]:grid-cols-1">
+              <div class="mb-[18px] animate-fadeUp2">
+                <label
+                  for="fonction"
+                  class="block text-[0.775rem] font-semibold text-label uppercase tracking-[0.06em] mb-1.5"
+                >
+                  Fonction <span class="text-primary">*</span>
+                </label>
+                <select
+                  id="fonction"
+                  name="fonction"
+                  class="field-input w-full bg-surface border border-border rounded-[10px] px-[15px] py-[13px] text-sm text-[#1a0a09] transition-all cursor-pointer"
+                >
+                  <option value="" disabled selected>Sélectionner…</option>
+                  <option value="DG">DG</option>
+                  <option value="DGA">DGA</option>
+                  <option value="PCA">PCA</option>
+                  <option value="SECRETAIRE GENERALE">
+                    SECRÉTAIRE GÉNÉRALE
+                  </option>
+                </select>
+                <p class="err text-[0.76rem] text-red-600 mt-1" id="e-fonction">
+                  Veuillez sélectionner votre fonction.
+                </p>
+              </div>
+              <div class="mb-[18px] animate-fadeUp2">
+                <label
+                  for="entreprise"
+                  class="block text-[0.775rem] font-semibold text-label uppercase tracking-[0.06em] mb-1.5"
+                >
+                  Entreprise <span class="text-primary">*</span>
+                </label>
+                <input
+                  type="text"
+                  id="entreprise"
+                  name="entreprise"
+                  placeholder="Nom de votre organisation"
+                  maxlength="120"
+                  class="field-input w-full bg-surface border border-border rounded-[10px] px-[15px] py-[13px] text-sm text-[#1a0a09] transition-all placeholder:text-[#c4b5b5] placeholder:font-light"
+                />
+                <p
+                  class="err text-[0.76rem] text-red-600 mt-1"
+                  id="e-entreprise"
+                >
+                  Veuillez renseigner le nom de votre entreprise.
+                </p>
+              </div>
+            </div>
+
+            <!-- Email -->
+            <div class="mb-[18px] animate-fadeUp3">
+              <label
+                for="email"
+                class="block text-[0.775rem] font-semibold text-label uppercase tracking-[0.06em] mb-1.5"
+              >
+                Adresse e-mail <span class="text-primary">*</span>
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="exemple@domaine.com"
+                autocomplete="email"
+                inputmode="email"
+                class="field-input w-full bg-surface border border-border rounded-[10px] px-[15px] py-[13px] text-sm text-[#1a0a09] transition-all placeholder:text-[#c4b5b5] placeholder:font-light"
+              />
+              <p class="err text-[0.76rem] text-red-600 mt-1" id="e-email">
+                Veuillez entrer une adresse e-mail valide.
+              </p>
+            </div>
+
+            <!-- Téléphone -->
+            <div class="mb-[18px] animate-fadeUp4">
+              <label
+                for="telephone"
+                class="block text-[0.775rem] font-semibold text-label uppercase tracking-[0.06em] mb-1.5"
+              >
+                Téléphone <span class="text-primary">*</span>
+              </label>
+              <input
+                type="tel"
+                id="telephone"
+                name="telephone"
+                placeholder="+221 XXX XX XX"
+                autocomplete="tel"
+                maxlength="20"
+                inputmode="numeric"
+                class="field-input w-full bg-surface border border-border rounded-[10px] px-[15px] py-[13px] text-sm text-[#1a0a09] transition-all placeholder:text-[#c4b5b5] placeholder:font-light"
+              />
+              <p class="err text-[0.76rem] text-red-600 mt-1" id="e-telephone">
+                Veuillez renseigner un numéro de téléphone.
+              </p>
+            </div>
+
+            <hr class="border-t border-border my-6 animate-fadeUp5" />
+
+            <div class="animate-fadeUp6">
+              <button
+                type="submit"
+                id="submit-btn"
+                class="btn w-full bg-primary text-secondary border-0 rounded-[10px] py-[15px] px-6 font-semibold text-[0.9rem] tracking-[0.07em] uppercase cursor-pointer flex items-center justify-center gap-2.5 transition-all duration-200 hover:bg-primary-hover hover:-translate-y-px hover:shadow-[0_6px_20px_rgba(96,5,3,0.28)] active:translate-y-0 disabled:opacity-65 disabled:cursor-not-allowed"
+              >
+                <span
+                  class="spinner hidden w-[15px] h-[15px] border-2 border-secondary/35 border-t-secondary rounded-full animate-spin"
+                ></span>
+                <span class="btn-label"></span>
+              </button>
+              <p
+                class="text-center text-[0.76rem] text-muted mt-3.5 leading-relaxed"
+              >
+                Champs <span class="text-primary">*</span> obligatoires. Vos
+                données restent confidentielles.
+              </p>
+            </div>
+          </form>
+
+          <!-- Success message -->
+          <div
+            id="success"
+            role="alert"
+            aria-live="polite"
+            class="text-center pt-5 pb-2.5"
+          >
+            <div
+              class="w-[60px] h-[60px] rounded-full bg-primary flex items-center justify-center mx-auto mb-5"
+            >
+              <svg
+                width="28"
+                height="28"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#fcc901"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+            </div>
+            <h2 class="font-display font-bold text-2xl text-[#1a0a09] mb-2.5">
+              Demande envoyée !
+            </h2>
+            <p
+              class="text-sm text-muted leading-[1.7] max-w-[380px] mx-auto mb-6"
+            >
+              Merci de rejoindre Think'AI. Votre demande a bien été transmise à
+              notre équipe. Vous serez contacté(e) sous 48h.
+            </p>
+            <button
+              onclick="resetForm()"
+              class="bg-transparent border border-primary text-primary rounded-lg px-[22px] py-2.5 font-medium text-[0.85rem] cursor-pointer transition-all duration-200 hover:bg-primary hover:text-white"
+            >
+              Soumettre une nouvelle demande
+            </button>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <!-- ═══ TOAST CONTAINER ══════════════════════════════ -->
+    <div id="toast-container" aria-live="polite" aria-atomic="true"></div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
