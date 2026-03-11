@@ -10,7 +10,7 @@
  *   SMTP_USER=votre.adresse@gmail.com
  *   SMTP_PASS=votre_mot_de_passe_application   ← Mot de passe d'application Gmail
  *   MAIL_FROM="Think'AI <votre.adresse@gmail.com>"
- *   MAIL_TO=mohamedsaizonou86@gmail.com
+ *   MAIL_TO=sidy.saizonou@accel-tech.net
  *   PORT=3001
  *
  * Pour Gmail : activez la validation en 2 étapes puis créez un
@@ -113,42 +113,46 @@ function buildHtmlEmail(d) {
 <body style="margin:0;padding:0;background:#f5f0f0;font-family:'Segoe UI',Arial,sans-serif;">
 
   <!-- Wrapper -->
-  <table width="100%" cellpadding="0" cellspacing="0" border="0"
-         style="background:#f5f0f0;padding:40px 16px;">
+  <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#f5f0f0;padding:40px 16px;">
     <tr><td align="center">
 
-      <!-- Card -->
       <table width="600" cellpadding="0" cellspacing="0" border="0"
-             style="background:#ffffff;border-radius:16px;overflow:hidden;
-                    box-shadow:0 4px 24px rgba(96,5,3,0.10);max-width:600px;width:100%;">
+             style="background:#ffffff;border-radius:16px;overflow:hidden;box-shadow:0 4px 24px rgba(96,5,3,0.10);max-width:600px;width:100%;">
 
-        <!-- ── HEADER ── -->
+        <!-- ── HEADER (fond rouge bordeaux en dégradé via table imbriquée) ── -->
         <tr>
-          <td style="background:linear-gradient(135deg,#600503 0%,#8a0705 100%);
-                     padding:36px 40px 32px;text-align:center;">
+          <td style="padding:0;">
+            <!--[if mso]>
+            <table width="600" cellpadding="0" cellspacing="0"><tr><td style="background:#600503;padding:36px 40px 32px;text-align:center;">
+            <![endif]-->
+            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td style="background:#600503;padding:36px 40px 32px;text-align:center;border-radius:16px 16px 0 0;">
 
-            <!-- Logo wordmark -->
-            <div style="font-size:28px;font-weight:900;color:#ffffff;
-                        letter-spacing:-0.01em;margin-bottom:6px;">
-              Think<span style="color:#fcc901;">'AI</span>
-            </div>
-            <div style="width:36px;height:2px;background:#fcc901;
-                        border-radius:2px;margin:10px auto 12px;"></div>
-            <p style="font-size:11px;font-weight:300;letter-spacing:0.22em;
-                      text-transform:uppercase;color:rgba(255,255,255,0.55);margin:0;">
-              Explorer · Comprendre · Anticiper
-            </p>
+                  <!-- Wordmark -->
+                  <div style="font-size:30px;font-weight:900;color:#ffffff;letter-spacing:-0.01em;margin-bottom:6px;font-family:'Segoe UI',Arial,sans-serif;">
+                    Think<span style="color:#fcc901;">'AI</span>
+                  </div>
 
-            <!-- Badge -->
-            <div style="margin-top:24px;">
-              <span style="display:inline-block;background:rgba(252,201,1,0.15);
-                           border:1px solid rgba(252,201,1,0.4);
-                           color:#fcc901;border-radius:20px;
-                           padding:6px 18px;font-size:12px;font-weight:600;
-                           letter-spacing:0.06em;text-transform:uppercase;">
-                Nouvelle demande d'adhésion
-              </span>
-            </div>
+                  <!-- Séparateur doré -->
+                  <div style="width:36px;height:2px;background:#fcc901;border-radius:2px;margin:10px auto 12px;"></div>
+
+                  <!-- Baseline -->
+                  <p style="font-size:11px;font-weight:300;letter-spacing:0.22em;text-transform:uppercase;color:rgba(255,255,255,0.55);margin:0;font-family:'Segoe UI',Arial,sans-serif;">
+                    Explorer · Comprendre · Anticiper
+                  </p>
+
+                  <!-- Badge -->
+                  <div style="margin-top:24px;">
+                    <span style="display:inline-block;background:rgba(252,201,1,0.18);border:1px solid rgba(252,201,1,0.45);color:#fcc901;border-radius:20px;padding:6px 18px;font-size:12px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;font-family:'Segoe UI',Arial,sans-serif;">
+                      Nouvelle demande d'adhésion
+                    </span>
+                  </div>
+
+                </td>
+              </tr>
+            </table>
+            <!--[if mso]></td></tr></table><![endif]-->
           </td>
         </tr>
 
@@ -289,10 +293,10 @@ app.post("/send", async (req, res) => {
 
   try {
     await transporter.sendMail({
-      from: process.env.MAIL_FROM || `"Think'AI" <${process.env.SMTP_USER}>`,
-      to: process.env.MAIL_TO || "mohamedsaizonou86@gmail.com",
-      replyTo: email,
-      subject: `[Think'AI] Nouvelle adhésion – ${nom} ${prenom}`,
+      from: `"(${prenom} ${nom}) via Think'AI " <${process.env.SMTP_USER}>`,
+      to: process.env.MAIL_TO || "sidy.saizonou@accel-tech.net",
+      replyTo: `"${prenom} ${nom}" <${email}>`,
+      subject: `[Think'AI] Nouvelle adhésion – ${prenom} ${nom} <${fonction}>`,
       html: buildHtmlEmail(data),
       // Version texte de secours
       text: `Nouvelle adhésion Think'AI\n\nNom : ${nom}\nPrénom : ${prenom}\nFonction : ${fonction}\nEntreprise : ${entreprise}\nE-mail : ${email}\nTéléphone : ${telephone}\nDate : ${data.date}`,
